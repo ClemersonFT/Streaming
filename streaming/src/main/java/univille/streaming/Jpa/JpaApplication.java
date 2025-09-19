@@ -4,6 +4,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import univille.streaming.entidades.Usuario;
+import univille.streaming.entidades.Video;
 
 import java.time.*;
 
@@ -16,13 +18,11 @@ public class JpaApplication {
 
 
 	@Bean
-	CommandLineRunner run(TarefaRepository repo) {
+	CommandLineRunner run(VideoRepository repoVid, UsuarioRepository repoUser) {
 		return args -> {
 			// Inserções
 
-			repo.save(new Tarefa(null,"Exercício de POO",false, LocalDateTime.of(LocalDate.of(2025,9,1),LocalTime.now()),null,null));
-			repo.save(new Tarefa(null,"Exercício de SOP",true, LocalDateTime.of(LocalDate.of(2025,9,1),LocalTime.now()),null,LocalDateTime.now()));
-			repo.save(new Tarefa(null,"Exercício de ESTD",false, LocalDateTime.of(LocalDate.of(2025,9,1),LocalTime.now()),LocalDateTime.of(LocalDate.of(2025,9,2),LocalTime.now()),null));
+			repoVid.save(new Video()
 
 			// Select
 			System.out.println("Lista de tarefas : Total:"+repo.count());
