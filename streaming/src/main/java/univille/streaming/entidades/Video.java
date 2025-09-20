@@ -1,8 +1,11 @@
 package univille.streaming.entidades;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
+import java.util.List;
+
+
+@Entity
 public class Video {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -10,23 +13,24 @@ public class Video {
     private String titulo;
     private String descricao;
     private int duracao;
-    private long categoria_id;
     @ManyToOne
-    @JoinColumn(name = "categoria_id", nullable = false)
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
+    @OneToMany(mappedBy = "video", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Visualizacao> visualizacoes;
+    @OneToMany(mappedBy = "video", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Avaliacao> avaliacoes;
 
 
     public Video(){
     };
 
-    public Video(String titulo, String descricao, int duracao, long categoria_id, Categoria categoria) {
+    public Video(String titulo, String descricao, int duracao, Categoria categoria) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.duracao = duracao;
-        this.categoria_id = categoria_id;
         this.categoria = categoria;
     }
-
 
 
     public long getId() {
@@ -45,10 +49,6 @@ public class Video {
         return duracao;
     }
 
-    public long getCategoria_id() {
-        return categoria_id;
-    }
-
     public void setId(long id) {
         this.id = id;
     }
@@ -63,9 +63,5 @@ public class Video {
 
     public void setDuracao(int duracao) {
         this.duracao = duracao;
-    }
-
-    public void setCategoria_id(long categoria_id) {
-        this.categoria_id = categoria_id;
     }
 }

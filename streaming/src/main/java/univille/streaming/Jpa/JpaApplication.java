@@ -3,17 +3,18 @@ package univille.streaming.Jpa;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.PageRequest;
 import univille.streaming.entidades.*;
 
 
 import java.sql.Timestamp;
-import java.time.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
-
+@EntityScan("univille.streaming.entidades")
 @SpringBootApplication
 public class JpaApplication {
 
@@ -33,13 +34,13 @@ public class JpaApplication {
 						   AvaliacaoRepository avaRepo) {
 
 		return args -> {
-			
-			usuarioRepo.deleteAll();
-			perfilRepo.deleteAll();
-			catRepo.deleteAll();
-			vidRepo.deleteAll();
+
 			visRepo.deleteAll();
 			avaRepo.deleteAll();
+			vidRepo.deleteAll();
+			perfilRepo.deleteAll();
+			catRepo.deleteAll();
+			usuarioRepo.deleteAll();
 
 			Usuario usuario1 = usuarioRepo.save(new Usuario("João Silva", "joao@email.com", "123456",dataAtual));
 			Usuario usuario2 = usuarioRepo.save(new Usuario("Maria Souza", "maria@email.com", "123456", dataAtual));
@@ -77,23 +78,23 @@ public class JpaApplication {
 			categorias.add(catRepo.save(new Categoria("Musical")));
 
 
-			Video video1 = vidRepo.save(new Video("Duro de Matar", "Um policial de Nova York luta contra terroristas em um prédio.", 120, 1, categorias.get(0)));
-			Video video2 = vidRepo.save(new Video("O Auto da Compadecida", "As aventuras de João Grilo e Chicó no sertão da Paraíba.", 90, 2, categorias.get(1)));
-			Video video3 = vidRepo.save(new Video("A Vida é Bela", "Um judeu italiano usa a imaginação para proteger seu filho em um campo de concentração.", 110, 3, categorias.get(2)));
-			Video video4 = vidRepo.save(new Video("Blade Runner 2049", "Um caçador de andróides descobre um segredo que pode mergulhar a sociedade no caos.", 130, 4, categorias.get(3)));
-			Video video5 = vidRepo.save(new Video("O Exorcista", "Uma mãe procura ajuda para sua filha, que está possuída por uma entidade demoníaca.", 100, 5, categorias.get(4)));
-			Video video6 = vidRepo.save(new Video("Diário de uma Paixão", "Um romance de verão entre um casal de classes sociais diferentes.", 105, 6, categorias.get(5)));
-			Video video7 = vidRepo.save(new Video("Pássaros na Floresta", "A vida e os hábitos de diversas espécies de pássaros.", 80, 7, categorias.get(6)));
-			Video video8 = vidRepo.save(new Video("Procurando Nemo", "Um peixe-palhaço embarca em uma jornada para encontrar seu filho sequestrado.", 70, 8, categorias.get(7)));
-			Video video9 = vidRepo.save(new Video("Toy Story", "Os brinquedos de um garoto ganham vida e precisam lidar com um novo boneco astronauta.", 95, 9, categorias.get(8)));
-			Video video10 = vidRepo.save(new Video("La La Land", "Um pianista de jazz e uma aspirante a atriz se apaixonam em Los Angeles.", 110, 10, categorias.get(9)));
+			Video video1 = vidRepo.save(new Video("Duro de Matar", "Um policial de Nova York luta contra terroristas em um prédio.", 120, categorias.get(0)));
+			Video video2 = vidRepo.save(new Video("O Auto da Compadecida", "As aventuras de João Grilo e Chicó no sertão da Paraíba.", 90, categorias.get(1)));
+			Video video3 = vidRepo.save(new Video("A Vida é Bela", "Um judeu italiano usa a imaginação para proteger seu filho em um campo de concentração.", 110, categorias.get(2)));
+			Video video4 = vidRepo.save(new Video("Blade Runner 2049", "Um caçador de andróides descobre um segredo que pode mergulhar a sociedade no caos.", 130, categorias.get(3)));
+			Video video5 = vidRepo.save(new Video("O Exorcista", "Uma mãe procura ajuda para sua filha, que está possuída por uma entidade demoníaca.", 100, categorias.get(4)));
+			Video video6 = vidRepo.save(new Video("Diário de uma Paixão", "Um romance de verão entre um casal de classes sociais diferentes.", 105, categorias.get(5)));
+			Video video7 = vidRepo.save(new Video("Pássaros na Floresta", "A vida e os hábitos de diversas espécies de pássaros.", 80, categorias.get(6)));
+			Video video8 = vidRepo.save(new Video("Procurando Nemo", "Um peixe-palhaço embarca em uma jornada para encontrar seu filho sequestrado.", 70, categorias.get(7)));
+			Video video9 = vidRepo.save(new Video("Toy Story", "Os brinquedos de um garoto ganham vida e precisam lidar com um novo boneco astronauta.", 95, categorias.get(8)));
+			Video video10 = vidRepo.save(new Video("La La Land", "Um pianista de jazz e uma aspirante a atriz se apaixonam em Los Angeles.", 110, categorias.get(9)));
 
 
 			Visualizacao visualizacao1 = visRepo.save(new Visualizacao(dataAtual, 45,perfil1,video1));
-			Visualizacao visualizacao2 = visRepo.save(new Visualizacao(dataAtual, 20,perfil2 ,video2));
-			Visualizacao visualizacao3 = visRepo.save(new Visualizacao(dataAtual, 70,perfil3 ,video3));
+			Visualizacao visualizacao2 = visRepo.save(new Visualizacao(dataAtual, 20,perfil2,video2));
+			Visualizacao visualizacao3 = visRepo.save(new Visualizacao(dataAtual, 70,perfil3,video3));
 			Visualizacao visualizacao4 = visRepo.save(new Visualizacao(dataAtual, 12,perfil4,video4));
-			Visualizacao visualizacao5 = visRepo.save(new Visualizacao(dataAtual, 120,perfil5 ,video5));
+			Visualizacao visualizacao5 = visRepo.save(new Visualizacao(dataAtual, 120,perfil5,video5));
 			Visualizacao visualizacao6 = visRepo.save(new Visualizacao(dataAtual, 5,perfil5,video6));
 			Visualizacao visualizacao7 = visRepo.save(new Visualizacao(dataAtual, 123,perfil2,video7));
 			Visualizacao visualizacao8 = visRepo.save(new Visualizacao(dataAtual, 100,perfil7,video8));
@@ -126,11 +127,11 @@ public class JpaApplication {
 					.forEach(System.out::println);
 
 			System.out.println("\nTop 10 vídeos mais bem avaliados:");
-			vidRepo.findTop10ByOrderByNotaDesc()
+			vidRepo.findTop10ByAverageNota()
 					.forEach(System.out::println);
 
 			System.out.println("\nTop 10 vídeos mais assistidos:");
-			vidRepo.findTop10ByOrderByVisualizacoesDesc()
+			vidRepo.findTop10ByMostViewed()
 					.forEach(System.out::println);
 
 			System.out.println("\nUsuário que mais assistiu vídeos:");

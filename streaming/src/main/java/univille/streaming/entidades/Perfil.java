@@ -1,21 +1,20 @@
 package univille.streaming.entidades;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
+
+@Entity
 public class Perfil {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nome_perfil;
-    private long usuario_id;
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
     public Perfil(String nome_perfil, long usuario_id, Usuario usuario) {
         this.nome_perfil = nome_perfil;
-        this.usuario_id = usuario_id;
         this.usuario = usuario;
     }
 
@@ -29,10 +28,6 @@ public class Perfil {
         return nome_perfil;
     }
 
-    public long getUsuario_id() {
-        return usuario_id;
-    }
-
     public void setId(long id) {
         this.id = id;
     }
@@ -41,7 +36,4 @@ public class Perfil {
         this.nome_perfil = nome_perfil;
     }
 
-    public void setUsuario_id(long usuario_id) {
-        this.usuario_id = usuario_id;
-    }
 }

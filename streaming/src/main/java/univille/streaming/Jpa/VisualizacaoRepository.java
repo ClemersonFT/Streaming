@@ -10,12 +10,6 @@ import java.util.List;
 
 public interface VisualizacaoRepository extends JpaRepository<Visualizacao, Long> {
 
-    @Query("""
-       SELECT v.usuario
-       FROM Visualizacao v
-       GROUP BY v.usuario
-       ORDER BY COUNT(v.id) DESC
-       """)
-
+    @Query("SELECT v.perfil.usuario FROM Visualizacao v GROUP BY v.perfil.usuario ORDER BY COUNT(v.id) DESC")
     List<Usuario> findUsuariosMaisAssiduos(Pageable pageable);
 }

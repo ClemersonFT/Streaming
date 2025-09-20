@@ -13,7 +13,7 @@ public class Avaliacao {
     @ManyToOne
     @JoinColumn(name = "video_id", nullable = false)
     private Video video;
-    private Integer nota;
+    private int nota;
     private String comentario;
 
     public Avaliacao(Perfil perfil, Video video, Integer nota, String comentario) {

@@ -1,12 +1,12 @@
 package univille.streaming.entidades;
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Entity
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +25,7 @@ public class Usuario {
         this.data_cadastro = data_cadastro;
     }
 
-    public Usuario(){}
-
+    public Usuario() {}
 
     public long getId() {
         return id;

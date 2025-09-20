@@ -1,10 +1,9 @@
 package univille.streaming.entidades;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
-
 import java.sql.Timestamp;
 
+@Entity
 public class Visualizacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,10 +11,10 @@ public class Visualizacao {
     private Timestamp data_hora;
     private int progresso;
     @ManyToOne
-    @JoinColumn(name = "perfil_id", nullable = false)
+    @JoinColumn(name = "perfil_id")
     private Perfil perfil;
     @ManyToOne
-    @JoinColumn(name = "video_id", nullable = false)
+    @JoinColumn(name = "video_id")
     private Video video;
 
     public Visualizacao(Timestamp data_hora, int progresso, Perfil perfil, Video video) {
