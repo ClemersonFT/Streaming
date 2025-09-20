@@ -1,6 +1,7 @@
 package univille.streaming.entidades;
 
 import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +14,8 @@ public class Categoria {
     @OneToMany(mappedBy = "categoria")
     private List<Video> videos = new ArrayList<>();
 
-    public Categoria(long id, String nome, List<Video> videos) {
-        this.id = id;
+    public Categoria(String nome) {
         this.nome = nome;
-        this.videos = videos;
     }
 
     public Categoria(){}

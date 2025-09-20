@@ -13,8 +13,7 @@ public class Perfil {
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
-    public Perfil(long id, String nome_perfil, long usuario_id, Usuario usuario) {
-        this.id = id;
+    public Perfil(String nome_perfil, long usuario_id, Usuario usuario) {
         this.nome_perfil = nome_perfil;
         this.usuario_id = usuario_id;
         this.usuario = usuario;

@@ -19,8 +19,7 @@ public class Video {
     public Video(){
     };
 
-    public Video(long id, String titulo, String descricao, int duracao, long categoria_id, Categoria categoria) {
-        this.id = id;
+    public Video(String titulo, String descricao, int duracao, long categoria_id, Categoria categoria) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.duracao = duracao;

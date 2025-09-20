@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 import org.springframework.data.annotation.Id;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +14,11 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    private Timestamp data_cadastro;
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Perfil> perfis = new ArrayList<>();
 
-    public Usuario(long id, String nome, String email, String senha, Timestamp data_cadastro) {
-        this.id = id;
+    public Usuario(String nome, String email, String senha, Timestamp data_cadastro) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -26,7 +27,6 @@ public class Usuario {
 
     public Usuario(){}
 
-    private Timestamp data_cadastro;
 
     public long getId() {
         return id;

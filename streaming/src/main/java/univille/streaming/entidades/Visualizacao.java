@@ -18,8 +18,7 @@ public class Visualizacao {
     @JoinColumn(name = "video_id", nullable = false)
     private Video video;
 
-    public Visualizacao(long id, Timestamp data_hora, int progresso, Perfil perfil, Video video) {
-        this.id = id;
+    public Visualizacao(Timestamp data_hora, int progresso, Perfil perfil, Video video) {
         this.data_hora = data_hora;
         this.progresso = progresso;
         this.perfil = perfil;

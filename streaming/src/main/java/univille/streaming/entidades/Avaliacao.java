@@ -16,6 +16,15 @@ public class Avaliacao {
     private Integer nota;
     private String comentario;
 
+    public Avaliacao(Perfil perfil, Video video, Integer nota, String comentario) {
+        this.perfil = perfil;
+        this.video = video;
+        this.nota = nota;
+        this.comentario = comentario;
+    }
+
+    public Avaliacao(){};
+
     public long getId() {return id;}
 
     public void setId(long id) {this.id = id;}
