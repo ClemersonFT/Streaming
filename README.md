@@ -16,7 +16,7 @@
 
 ## Diagrama de classe da UML
 
-![Diagrama de classe](/DiagramaDeClasse.pdf)
+![Diagrama de classe](/ClassDiagram.pdf)
 
 ## Instruções SQL
 
